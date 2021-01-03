@@ -110,7 +110,16 @@ function TurtleState:overrideFunctions()
         self.getItemDetail = nil
 
         self._getItemCount = self.getItemCount
-        self.getItemCount = nil
+        self.getItemCont = nil
+
+        self._inspect = self.inspect
+        self.inspect = nil
+
+        self._inspectUp = self.inspectUp
+        self.inspectUp = nil
+
+        self._inspectDown = self.inspectDown
+        self.inspectDown = nil
     end
 end
 
@@ -166,14 +175,14 @@ end
 ---@param amount number
 ---@return boolean
 function TurtleState:refuel (amount)
-    return self:_refuel(amount)
+    return self._refuel(amount)
 end
 
 -- Get fuel level of turtle
 --
 ---@return number
 function TurtleState:getFuelLevel ()
-    return self:_getFuelLevel()
+    return self._getFuelLevel()
 end
 
 -- Drop item in front of turtle
@@ -248,6 +257,28 @@ function TurtleState:placeDown(signText)
     return self._placeDown(signText)
 end
 
+-- Inspect block in front of the turtle
+--
+---@return boolean, table/sting
+function TurtleState:inspect()
+    return self._inspect()
+end
+
+-- Inspect block in front of the turtle
+--
+---@return boolean, table/sting
+function TurtleState:inspectUp()
+    return self._inspectUp()
+end
+
+-- Inspect block in front of the turtle
+--
+---@return boolean, table/sting
+function TurtleState:inspectDown()
+    return self._inspectDown()
+end
+
+
 -- Select an inventory slot
 --
 ---@param slot number
@@ -262,6 +293,14 @@ end
 ---@return table
 function TurtleState:getItemDetail(slot)
     return self._getItemDetail(slot)
+end
+
+-- Get number of items in a given slot
+--
+---@param slot number
+---@return number
+function TurtleState:getItemCount(slot)
+    return self._getItemCount(slot)
 end
 
 -- Move the turtle's position forward one value.

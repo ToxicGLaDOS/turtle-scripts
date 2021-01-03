@@ -92,12 +92,16 @@ end
 
 local function getFuelLevel()
     --print("Getting fuel level")
-    return 1000
+    return math.random(950, 2000)
 end
 
 local function getFuelLimit()
     --print("Getting fuel limit")
     return 10000
+end
+
+local function refuel()
+    return true
 end
 
 local function select(slot)
@@ -111,7 +115,20 @@ local function getItemDetail(slot)
 end
 
 local function getItemCount(slot)
-    return 2
+    return math.random(0,4)
+    --return math.random(0,64)
+end
+
+local function inspect()
+    return true, {name = "minecraft:chest"}
+end
+
+local function inspectUp()
+    return true, {name = "minecraft:chest"}
+end
+
+local function inspectDown()
+    return true, {name = "minecraft:chest"}
 end
 
 turtle.forward = forward
@@ -134,6 +151,10 @@ turtle.placeUp = placeUp
 turtle.placeDown = placeDown
 turtle.getFuelLevel = getFuelLevel
 turtle.getFuelLimit = getFuelLimit
+turtle.refuel = refuel
 turtle.select = select
 turtle.getItemDetail = getItemDetail
 turtle.getItemCount = getItemCount
+turtle.inspect = inspect
+turtle.inspectUp = inspectUp
+turtle.inspectDown = inspectDown
