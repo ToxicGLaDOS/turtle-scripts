@@ -190,7 +190,7 @@ end
 ---@param amount number
 ---@return boolean, string?
 function TurtleState:drop (amount)
-    return self:_drop(amount)
+    return self._drop(amount)
 end
 
 -- Drop item above turtle
@@ -198,7 +198,7 @@ end
 ---@param amount number
 ---@return boolean, string?
 function TurtleState:dropUp (amount)
-    return self:_dropUp(amount)
+    return self._dropUp(amount)
 end
 
 -- Drop item below turtle
@@ -206,7 +206,7 @@ end
 ---@param amount number
 ---@return boolean, string?
 function TurtleState:dropDown (amount)
-    return self:_dropDown(amount)
+    return self._dropDown(amount)
 end
 
 -- Suck an item off the ground or from a chest in front of the turtle
@@ -214,7 +214,7 @@ end
 ---@param amount number
 ---@return boolean, string?
 function TurtleState:suck (amount)
-    return self:_suck(amount)
+    return self._suck(amount)
 end
 
 -- Suck an item off the ground or from a chest in above of the turtle
@@ -222,7 +222,7 @@ end
 ---@param amount number
 ---@return boolean, string?
 function TurtleState:suckUp(amount)
-    return self:_suckUp(amount)
+    return self._suckUp(amount)
 end
 
 -- Suck an item off the ground or from a chest in below of the turtle
@@ -230,7 +230,7 @@ end
 ---@param amount number
 ---@return boolean, string?
 function TurtleState:suckDown(amount)
-    return self:_suckDown(amount)
+    return self._suckDown(amount)
 end
 
 -- Place a block in front of the turtle
@@ -284,7 +284,7 @@ end
 ---@param slot number
 ---@return boolean
 function TurtleState:select(slot)
-    return self:_select(slot)
+    return self._select(slot)
 end
 
 -- Get details for the item in the given slot
@@ -311,12 +311,12 @@ end
 function TurtleState:forward (force)
     local success = nil
     if force then
-        while not self:_forward() do
+        while not self._forward() do
             self:dig()
         end
         success = true
     else
-        success = self:_forward()
+        success = self._forward()
     end
 
     if success then
@@ -341,7 +341,7 @@ end
 --
 ---@return boolean
 function TurtleState:back ()
-    local success = self:_back()
+    local success = self._back()
     if success then
         if self.facing == 0 then
             self.pos.x = self.pos.x - 1
@@ -366,12 +366,12 @@ end
 function TurtleState:up (force)
     local success = nil
     if force then
-        while not self:_up() do
+        while not self._up() do
             self:digUp()
         end
         success = true
     else
-        success = self:_up()
+        success = self._up()
     end
     if success then
         self.pos.y = self.pos.y + 1
@@ -387,12 +387,12 @@ end
 function TurtleState:down (force)
     local success = nil
     if force then
-        while not self:_down() do
+        while not self._down() do
             self:digDown()
         end
         success = true
     else
-        success = self:_down()
+        success = self._down()
     end
     if success then
         self.pos.y = self.pos.y - 1
@@ -426,7 +426,7 @@ end
 --
 ---@return boolean
 function TurtleState:turnLeft ()
-    local success = self:_turnLeft()
+    local success = self._turnLeft()
     if success then
         self.facing = self.facing + 1
         self.facing = self.facing % 4
@@ -439,7 +439,7 @@ end
 --
 ---@return boolean
 function TurtleState:turnRight ()
-    local success = self:_turnRight()
+    local success = self._turnRight()
     if success then
         self.facing = self.facing - 1
         self.facing = self.facing % 4
