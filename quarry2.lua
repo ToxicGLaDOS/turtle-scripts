@@ -1,4 +1,4 @@
---require "mockTurtle"
+require "mockTurtle"
 require "turtleState"
 
 -- Check if inventory is full
@@ -193,12 +193,12 @@ local function quarry()
 
             local xDest = nil
             local xDir = nil
-            -- If z % 2 == 1 then we're going forward
-            if z % 2 == 0 then
+            -- If z % 2 == y % 2 then we're going forward
+            if z % 2 == y % 2 then
                 turtle:face(0)
                 xDest = length - 1
                 xDir = 1
-            -- If z % 2 == 0 then we're going backward
+            -- If z % 2 ~= y % 2 then we're going backward
             else
                 turtle:face(2)
                 xDest = 0
