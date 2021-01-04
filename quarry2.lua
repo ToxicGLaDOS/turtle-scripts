@@ -1,4 +1,4 @@
-require "mockTurtle"
+--require "mockTurtle"
 require "turtleState"
 
 -- Check if inventory is full
