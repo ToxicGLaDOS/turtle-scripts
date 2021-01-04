@@ -39,7 +39,7 @@ local function refuel()
     print(string.format("x: %i, y: %i, z: %i", turtle.pos.x, turtle.pos.y, turtle.pos.z))
     turtle:face(1)
    for i = 1, 16, 1 do
-        if turtle.getItemCount(i) == 0 then
+        if turtle:getItemCount(i) == 0 then
             print("Found slot. Refueling")
             turtle:select(i)
             turtle:suck()
