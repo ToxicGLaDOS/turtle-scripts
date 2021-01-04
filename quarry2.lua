@@ -187,7 +187,7 @@ local function quarry()
             zDir = 1
         end
 
-        for z = turtle.pos.z, zDest - zDir, zDir do
+        for z = turtle.pos.z, zDest, zDir do
             digUpAndCheckInventory()
             digDownAndCheckInventory()
 
@@ -215,13 +215,15 @@ local function quarry()
             end
 
             -- Shift over one block and turn around
-            turtle:face(3 + (2 * (y % 2)))
-            digAndCheckInventory()
-            forwardAndCheckFuel(true)
-            print(string.format("b x: %i, y: %i, z: %i", turtle.pos.x, turtle.pos.y, turtle.pos.z))
-            digUpAndCheckInventory()
-            digDownAndCheckInventory()
-            turtle:face(turtle.facing + 2)
+            if z ~= zDest then
+                turtle:face(3 + (2 * (y % 2)))
+                digAndCheckInventory()
+                forwardAndCheckFuel(true)
+                print(string.format("b x: %i, y: %i, z: %i", turtle.pos.x, turtle.pos.y, turtle.pos.z))
+                digUpAndCheckInventory()
+                digDownAndCheckInventory()
+                turtle:face(turtle.facing + 2)
+            end
         end
         -- Prevent us from doing this on the last iteration
         if y - 3 >= 1 - depth then
