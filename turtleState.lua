@@ -110,7 +110,7 @@ function TurtleState:overrideFunctions()
         self.getItemDetail = nil
 
         self._getItemCount = self.getItemCount
-        self.getItemCont = nil
+        self.getItemCount = nil
 
         self._inspect = self.inspect
         self.inspect = nil
